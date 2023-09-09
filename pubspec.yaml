@@ -1,0 +1,38 @@
+name: ddayboo
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_native_splash: ^2.3.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.1
+  flutter_widgetkit: ^1.0.3
+  draggable_bottom_sheet: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - assets/image/mm_logo.png
+    - assets/image/bg.png
+    - assets/image/loading.gif
+    - assets/image/bb_loading.gif
+    - assets/image/square.png
+  uses-material-design: true
+
+flutter_native_splash:
+  color: 'ffffff'
+  image: assets/image/mm_logo.png
