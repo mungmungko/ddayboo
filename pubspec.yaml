@@ -36,4 +36,9 @@ flutter:
     - assets/image/boo2.png
     - assets/image/sun.png
     - assets/image/bg_heart.png
+    - assets/image/store.png
+    - assets/image/setting.png
+    - assets/image/dday.png
+    - assets/image/set.png
+    - assets/image/star.png
   uses-material-design: true

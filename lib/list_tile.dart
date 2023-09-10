@@ -87,7 +87,7 @@ class _ListTileExampleState extends State<ListTileExample> {
                 ],
               ),
               trailing: Text(
-                "D-$daysRemaining",
+                "D $daysRemaining",
                 style: TextStyle(
                   color: Colors.pink,
                   fontSize: 13,

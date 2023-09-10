@@ -4,6 +4,8 @@ import 'package:ddayboo/hive.dart';
 import 'package:ddayboo/list_tile.dart';
 import 'package:ddayboo/lover1_dialog.dart';
 import 'package:ddayboo/lover2_dialog.dart';
+import 'package:ddayboo/settings_screen.dart';
+import 'package:ddayboo/store_screen.dart';
 import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
@@ -52,6 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String? lover2Name;
   DateTime? lover1Birthday;
   DateTime? lover2Birthday;
+  bool? countFromZero;
+  String? loveText;
 
   @override
   void initState() {
@@ -73,6 +77,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // 연인2의 이름 및 생일 로드
     lover2Name = await HiveHelper.getLover2Name() ?? '연인2 이름을 입력하세요';
     lover2Birthday = await HiveHelper.getLover2Birthday();
+
+    // 0일부터 세기 설정 항목 로드
+    countFromZero = await HiveHelper.getCountFromZeroSetting();
+
+    // 상단 문구 로드
+    loveText = await HiveHelper.getLoveText();
 
     setState(() {});
   }
@@ -98,8 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Center(
                 child: Column(
                   children: [
+                    // Text("$countFromZero"),
                     Text(
-                      "우리 커플",
+                      loveText ?? "우리 커플",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
@@ -109,7 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 6,
                     ),
                     Text(
-                      dDay != null ? "$dDay일" : "날짜를 선택해주세요.",
+                      dDay != null
+                          ? "${countFromZero == true ? dDay! + 1 : dDay}일"
+                          : "날짜를 선택해주세요.",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 30,
@@ -134,9 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             // 날짜 Button
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.1,
-              left: 0,
-              right: 0,
+              top: MediaQuery.of(context).size.height * 0.08, // 예시 위치
+              right: MediaQuery.of(context).size.width * 0.8, // 예시 위치
               child: Center(
                 child: InkWell(
                   onTap: () {
@@ -146,9 +158,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                   child: Image.asset(
-                    'assets/image/sun.png',
-                    width: 100,
-                    height: 100,
+                    'assets/image/dday.png',
+                    width: 50,
+                    height: 50,
                   ),
                 ),
               ),
@@ -221,6 +233,52 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            //상점
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.15, // 예시 위치
+              right: MediaQuery.of(context).size.width * 0.05, // 예시 위치
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ShopScreen()),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/image/star.png',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // 환경설정
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.08, // 예시 위치
+              right: MediaQuery.of(context).size.width * 0.05, // 예시 위치
+              child: InkWell(
+                onTap: () async {
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => SettingsScreen(),
+                    ),
+                  );
+                  _loadDate();
+                },
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/image/set.png',
+                      width: 40,
+                      height: 40,
                     ),
                   ],
                 ),
