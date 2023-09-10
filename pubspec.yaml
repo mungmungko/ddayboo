@@ -12,12 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_native_splash: ^2.3.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   path_provider: ^2.1.1
   flutter_widgetkit: ^1.0.3
   draggable_bottom_sheet: ^1.0.2
+  flutter_datetime_picker_plus: ^2.0.1
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -31,8 +32,8 @@ flutter:
     - assets/image/loading.gif
     - assets/image/bb_loading.gif
     - assets/image/square.png
+    - assets/image/boo1.png
+    - assets/image/boo2.png
+    - assets/image/sun.png
+    - assets/image/bg_heart.png
   uses-material-design: true
-
-flutter_native_splash:
-  color: 'ffffff'
-  image: assets/image/mm_logo.png

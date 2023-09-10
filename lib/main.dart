@@ -1,17 +1,13 @@
+import 'package:ddayboo/loading_screen1.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'screens/loading_screen.dart';
-import 'package:flutter_widgetkit/flutter_widgetkit.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:ddayboo/hive.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
-  await Hive.initFlutter(); // Hive 초기화
-
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await HiveHelper.initHive();
   runApp(const MyApp());
-  // Set AppGroup
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
+    // FlutterNativeSplash.remove();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
